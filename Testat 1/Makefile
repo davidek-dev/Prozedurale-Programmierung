@@ -33,3 +33,7 @@
 
 all:
 	gcc -std=c99 -pedantic -Wall -Wextra -o blatt01_1.exe blatt01_1.c
+#1c)	
+	blatt01_1.exe
+#1.3)
+	gcc -std=c99 -pedantic -Wall -Wextra -o blatt01_3.exe blatt01_3.c

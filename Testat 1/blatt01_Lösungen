@@ -1,0 +1,18 @@
+Bei a kommt die Meldung "expected ; bevor a"
+Die Ausführung ist hier nicht möglich, da der compiler kein Ende
+der Reihe sehen kann und somit ein Fehler erzeugt wird.
+
+Bei b kommt die Meldung, dass eine implizierte typumwandlung von 
+integer zu floating point number stattfindet.
+Eine Ausführungist immernoch möglich, jedoch 
+ist die ´Zahl 42 in floating point entsprechend 0.000...
+und die Ausgabe ist:
+
+C:\Users\david\Documents\GitHub\Prozedurale-Programmierung-Testate\Testat 1>blatt01_1.e
+
+
+ Hallo TUTOR!
+
+Die Antwort ist:         0.000000
+
+C:\Users\david\Documents\GitHub\Prozedurale-Programmierung-Testate\Testat 1>
