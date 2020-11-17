@@ -6,6 +6,7 @@
 //
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main() {
     int16_t a_16, b_16, c_16; //–32.768 bis 32.767
