@@ -10,7 +10,7 @@
 int main() {
     
     int N;
-    printf("\nBitte geben Sie eine Zahl von 0 bis 10 ein: \n");
+    printf("Bitte geben Sie eine Zahl von 0 bis 10 ein: ");
       scanf("%d",&N);
     if (N > 10) {
         printf("Ihre Eingabe ist zu hoch\n");
@@ -46,9 +46,6 @@ int main() {
     
     }
     }
-    
-   system("pause");  
-   return 0;      
-
+        
 }
 

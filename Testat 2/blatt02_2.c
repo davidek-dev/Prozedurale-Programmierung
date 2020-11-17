@@ -6,7 +6,6 @@
 //
 
 #include <stdio.h>
-#include <stdint.h>
 
 int main() {
    
@@ -15,6 +14,7 @@ int main() {
     int i;
   
     
+        
 
     printf("ihre Zahl in Binär: ");
    
@@ -29,7 +29,7 @@ int main() {
     printf("%d",index[i-1]);
         printf(" ");
     }
-    
+    printf("\n");
     printf("\n");
     return 0;
     }
