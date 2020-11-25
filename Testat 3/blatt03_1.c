@@ -11,45 +11,71 @@ Gilt für diese Maschinengenauigkeit auch 2 + ε ≥ 2 ?
 Was sagt dies über ε aus? 
 Wie viele binäre oder dezimale Nachkommastellen können die Datentypen float und double darstellen?
 */
-
 #include <stdio.h>
 #include <float.h>
+#include <math.h>
 
 int main() {
-  float  temp_f, eps_f = 1.0f; // Das "f" am Ende sorgt fuer float Konstante.
-  double eps_d = 1.0;  
-  int count = 0;
 
-  do {
-    eps_f = eps_f / 2;
-    temp_f= 1.0 + (eps_f / 2);
-    count--;
-  } while ( temp_f> 1.0);
+int Vorgabe;
+printf("\nx + epsilon >= x\n\n soll x mit 1 oder mit 2 besetzt werden?");
+scanf("%d",&Vorgabe);
+printf("\n\nAusgewählt:%d\n\n", Vorgabe);
 
-  printf("\nEs wird angefangen bei der Potenz 2^0. Dort beträgt der Wert für eps_f = 1\nNach der iteration der do-while Schleife\nIst bei der 2^%d ten Potenz der kleinste mögliche Wert für epsilon erreicht, dies ist somit das Ende der Mantisse\nEs werden entsprechend %.23f = %d Nachkommastellen angezeigt\n\n", count+1, eps_f, count);
-  printf("Die nächste Stufe wäre %.23f\nMit %.23e \t==> %.7e + %.7e = %.7e\n", 1.0f, eps_f / 2, 1.0f + (eps_f / 2));
-  printf("\t==> %.7e + %.7e = %.7e\n", 2.0f, eps_f, 2.0f + eps_f);
+int Exponent = 1;
+float epsilon_f = 1;
+float Signifikanz_f = 1+(epsilon_f/2);
+
+double epsilon_d = 1;
+double Signifikanz_d = 1+(epsilon_d/2);
 
 
-  printf("\t==> %.7e + %.7e = %.7e\n", 1.0f, eps_f, 1.0f + eps_f);
-  printf("\t==> %.7e + %.7e = %.7e\n", 1.0f, eps_f / 2, 1.0f + (eps_f / 2));
-  printf("\t==> %.7e + %.7e = %.7e\n", 2.0f, eps_f, 2.0f + eps_f);
+printf("Das folgende zeigt die Zweierpotenzen absteigend bis zur vom Typ float niedrigsten erkannten Potenz.\n \n");
+do {
 
-  /** double:
-   *
-   * eps_d = 2^-52 ~ 2.22*10^{-16} also Genauigkeit von 15 - 16 Dezimalstellen.
-   *
-   * Die Maschinengenauigkeit eps_d ist ebenfalls eine relative Groesse.
-   */
-  count = 0;
-  do {
-    eps_d = eps_d / 2;
-    count = count - 1;
-  } while (1.0 + (eps_d / 2) > 1.0);
-  printf("\neps_double = 2^%d = %.16e = %.16e\n\n", count, eps_d, DBL_EPSILON);
-  printf("\t==> %.16e + %.16e = %.16e\n", 1.0, eps_d, 1.0 + eps_d);
-  printf("\t==> %.16e + %.16e = %.16e\n", 1.0, eps_d / 2, 1.0 + (eps_d / 2));
-  printf("\t==> %.16e + %.16e = %.16e\n", 2.0, eps_d, 2.0 + eps_d);
+  Exponent = Exponent -1;
 
-  return 0;
+  float power = pow(2, Exponent);
+  printf("2 hoch %d:      ",Exponent);
+  epsilon_f= 1*power;
+
+  Signifikanz_f = Vorgabe+Vorgabe*(epsilon_f/2);
+
+  printf("%.23f\n",epsilon_f );
+
+} while(Signifikanz_f>Vorgabe);
+
+printf("\n Die niederigste Zweierpotenz von, die erreicht werden kann im Datentyp Float ohne \n unbeachtet zu bleiben, ist %.23f\n", epsilon_f );
+
+
+printf("\n\n_______________________________________________________________\n\n");
+
+
+Exponent = 1;
+
+
+
+
+
+printf("Das folgende zeigt die Zweierpotenzen absteigend bis zur vom Typ double niedrigsten erkannten Potenz.\n \n");
+do {
+
+  Exponent = Exponent -1;
+
+  double power = pow(2, Exponent);
+  printf("2 hoch %d:      ",Exponent);
+  epsilon_d= 1*power;
+
+  Signifikanz_d = Vorgabe+Vorgabe*(epsilon_d/2);
+
+  printf("%.33f\n",epsilon_d );
+
+} while(Signifikanz_d>Vorgabe);
+
+printf("\n Die niederigste Zweierpotenz, die erreicht werden kann im Datentyp Double ohne \n unbeachtet zu bleiben, ist %.32f\n", epsilon_d );
+
+system("pause");
+
+return 0;
+
 }

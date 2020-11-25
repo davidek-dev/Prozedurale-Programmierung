@@ -21,3 +21,72 @@ c) Nicht alle Architekturen und Programmiersprachen unterstützen die Modulo-Ope
 Wie kann unter Ausnutzung der Integer-Division der Divisionrest trotzdem noch effizient berechnet werden? 
 Wie verändert sich das Programm aus b)?
 */
+#include <stdio.h>
+#include <math.h>
+
+int main (){
+   unsigned int a;
+   unsigned int b;
+   printf("\nHallo und willkommen zum ggT Rechner!\nEs gibt zwei Möglichkeiten den ggT zu berechnen\n\n");
+   printf("\t1. klassischer euklidischer Algorithmus\n");
+   printf("\t2. effizienteren, modifizierten Euklidischen Algorithmus");
+   printf("gib die erste Zahl ein:  ");
+   scanf("%d\n", &a);
+   printf("gib die zweite Zahl ein: \n");
+   scanf("%d\n", &b);
+
+
+
+
+
+ unsigned int A = 81;
+  unsigned int B = 36;
+  unsigned int a, b, temp; // Arbeitskopien
+
+  if ((A == 0) && (B == 0)) {
+    printf("Der ggT ist fuer a == b == 0 nicht definiert!\n");
+    return -1;
+  }
+
+  printf("Klassischer Euklidischer Algorithmus:\n\n");
+  a = A;
+  b = B;
+
+  if (a == 0) { // ggt(A,B) = b
+    a = b;
+    b = 0; // Damit bricht nachfolgender Algorithmus ab
+  }
+
+  while (b != 0) {
+    if (a > b) {
+      a = a - b;
+    } else {
+      b = b - a;
+    }
+  }
+  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+
+  printf("Modifizierter Euklidischer Algorithmus:\n\n");
+  a = A;
+  b = B;
+
+  while (b != 0) {
+    temp = a % b;
+    a = b;
+    b = temp;
+  }
+  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+
+  puts("Modifizierter Euklidischer Algorithmus (ohne \045):\n"); // \045 == %
+  a = A;
+  b = B;
+
+  while (b != 0) {
+    temp = a - (a / b) * b; // Integer-Division!
+    a = b;
+    b = temp;
+  }
+  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+
+  return 0;
+}
