@@ -35,7 +35,7 @@ int std_euklid_ggT(unsigned int a, unsigned int b){
     if (a > b) {
       a = a - b;
     } else {
-      b = b - a;
+      b = b - a;//sdasdh
     }
   }
   return a;
