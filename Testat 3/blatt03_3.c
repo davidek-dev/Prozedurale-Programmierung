@@ -24,34 +24,8 @@ Wie verändert sich das Programm aus b)?
 #include <stdio.h>
 #include <math.h>
 
-int main (){
-   unsigned int a;
-   unsigned int b;
-   printf("\nHallo und willkommen zum ggT Rechner!\nEs gibt zwei Möglichkeiten den ggT zu berechnen\n\n");
-   printf("\t1. klassischer euklidischer Algorithmus\n");
-   printf("\t2. effizienteren, modifizierten Euklidischen Algorithmus");
-   printf("gib die erste Zahl ein:  ");
-   scanf("%d\n", &a);
-   printf("gib die zweite Zahl ein: \n");
-   scanf("%d\n", &b);
 
-
-
-
-
- unsigned int A = 81;
-  unsigned int B = 36;
-  unsigned int a, b, temp; // Arbeitskopien
-
-  if ((A == 0) && (B == 0)) {
-    printf("Der ggT ist fuer a == b == 0 nicht definiert!\n");
-    return -1;
-  }
-
-  printf("Klassischer Euklidischer Algorithmus:\n\n");
-  a = A;
-  b = B;
-
+int std_euklid_ggT(unsigned int a, unsigned int b){
   if (a == 0) { // ggt(A,B) = b
     a = b;
     b = 0; // Damit bricht nachfolgender Algorithmus ab
@@ -64,29 +38,71 @@ int main (){
       b = b - a;
     }
   }
-  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+  return a;
+}
 
-  printf("Modifizierter Euklidischer Algorithmus:\n\n");
-  a = A;
-  b = B;
+int advanced_euklid_ggT(unsigned int a, unsigned int b){
+  unsigned int temp=0;
 
   while (b != 0) {
     temp = a % b;
     a = b;
     b = temp;
   }
-  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+  return a;
+}
 
-  puts("Modifizierter Euklidischer Algorithmus (ohne \045):\n"); // \045 == %
-  a = A;
-  b = B;
+int advanced_euklid_ggT_no_modulo(unsigned int a, unsigned int b){
+  unsigned int temp=0;
 
   while (b != 0) {
-    temp = a - (a / b) * b; // Integer-Division!
+    temp = a - (a / b) * b; 
     a = b;
     b = temp;
   }
-  printf("\tggT(%u, %u) = %u\n\n", A, B, a);
+  return a;
+}
+
+int main (){
+
+   int Modus =0;
+   unsigned int a, b;
+   printf("\nHallo und willkommen zum ggT Rechner!\nEs gibt zwei M%cglichkeiten den ggT zu berechnen\n\n", 148);
+   printf("\t1. klassischer euklidischer Algorithmus\n");
+   printf("\t2. effizienteren, modifizierten Euklidischen Algorithmus\n");
+   printf("\t3. effizienteren, modifizierten Euklidischen Algorithmus ohne den Modulo Operator\n\n");
+   //while((!(Modus==1))||(!(Modus==2))||(!(Modus==3))){
+       printf("Welchen Modus willst du verwenden? 1, 2 oder 3?\n");
+       scanf("%d",&Modus);
+   //}
+   
+   printf("\n\nGeb die erste Zahl ein:\t\n");
+   scanf("%d", &a);
+   printf("\nGeb die zweite Zahl ein:\t\n");
+   scanf("%d", &b);
+
+  if ((a == 0) && (b == 0)) {
+    printf("Der ggT ist fuer a == b == 0 nicht definiert!\n");
+    return -1;
+  }
+
+  switch (Modus)
+  {
+  case 1:
+      printf("Klassischer Euklidischer Algorithmus:\n\n");
+      printf("\tggT(%d, %d) = %d\n\n", a, b, std_euklid_ggT(a, b));
+      break;
+  case 2:
+      printf("Modifizierter Euklidischer Algorithmus:\n\n");
+        printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT(a, b));  
+      break;
+  default:
+      printf("Modifizierter Euklidischer Algorithmus (ohne \045):\n");
+      printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT_no_modulo(a, b));
+      break;
+  }
+
+
 
   return 0;
 }
