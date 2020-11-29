@@ -56,7 +56,7 @@ int advanced_euklid_ggT_no_modulo(unsigned int a, unsigned int b){
   unsigned int temp=0;
 
   while (b != 0) {
-    temp = a - (a / b) * b; 
+    temp = a - (a / b) * b; //Integer division "verschluckt" den Rest, durch subtrahieren mit Orginal Wert kann der Rest ermittelt werden
     a = b;
     b = temp;
   }
