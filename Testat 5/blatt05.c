@@ -101,6 +101,8 @@ Nutzen Sie dazu die scanf-Funktion oder für zeichenweises Einlesen die getchar-
     int row_select;
     int column_select;
     int new_value;
+    int startBoxRow;
+    int startBoxCol;
 
     for (int i = 0; i < 9; i++)
     {
@@ -194,7 +196,20 @@ Nutzen Sie dazu die scanf-Funktion oder für zeichenweises Einlesen die getchar-
        }
 
         //TODO: Box regel
-       
+       startBoxRow = (row_select+1) - row_select % 3;
+       startBoxCol = (column_select+1) - column_select % 3;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (Feld[i+startBoxRow][j+startBoxCol]==Feld[row_select][column_select])
+                {
+                    printf("\n\nIm der gleichen Box in der %d ten Spalte und der %d ten Reihe der Box gibt es bereits den Eintrag %d\n\n", startBoxRow+i+1, j+startBoxCol+1, new_value);
+                    goto set;
+                }
+            }
+        }
         
 
        set:
