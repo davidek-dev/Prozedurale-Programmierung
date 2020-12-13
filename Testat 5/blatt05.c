@@ -28,13 +28,12 @@ wie in oberer Abbildungübersichtlich auf dem Bildschirm ausgibt
 */
 
 void drucken(int (*ptr)[9])
-{  
+{
     printf("\n\nFolgendes sind die 4 Sudokuregeln:\n\n");
     printf("\t1.\tDie Werte m\x81ssen im Bereich von 1 bis 9 sein\n");
     printf("\t2.\tIn einer Reihe darf keine Zahl mehr als ein mal auftreten\n");
     printf("\t3.\tIn einer Spalte darf keine Zahl mehr als ein mal auftreten\n");
     printf("\t4.\tIn einem Block darf keine Zahl mehr als ein mal auftreten\n\n\n");
-
 
     printf("      1  2  3     4  5  6     7  8  9\n");
     printf("   +-----------+-----------+-----------+\n");
@@ -71,12 +70,6 @@ void drucken(int (*ptr)[9])
 int main()
 {
 
-
-
-
-    
-    
-    
     // Kopiere das original SUDOKU ins Spielfeld.
     for (int row = 0; row < 9; row++)
     {
@@ -120,8 +113,6 @@ Nutzen Sie dazu die scanf-Funktion oder für zeichenweises Einlesen die getchar-
     //Aufgabe 1.4 - Spiel spielbar machen
     //..............................
 
-
-
     while (empty_fields != 0) //solange nicht jedes feld ausgefüllt ist
     {
         //printf("\e[1;1H\e[2J"); //Regex führt hier zum clear des Bildschirms und zum
@@ -129,7 +120,7 @@ Nutzen Sie dazu die scanf-Funktion oder für zeichenweises Einlesen die getchar-
         //unabhängig von der Fenstergröße. Vorteil gegenüber system("clear") ist
         //die viel höhere effizienz
         //Fehl Eingabe Managment
-        
+
         drucken(Feld);
         //Wert eingabe
         new : printf("\n\n\nF\x81lle das Sudoku aus!\n\n"); //goto anweisung. bei Fehler wird hier nochmal gestartet
@@ -173,47 +164,46 @@ Nutzen Sie dazu die scanf-Funktion oder für zeichenweises Einlesen die getchar-
         //------------------------------------------------------
         column_select--;
         row_select--;
-        
-        
 
         //spalten&reihen Regel
         Feld[row_select][column_select] = new_value;
-       for (int row = 0; row < 9; row++)
-       {
-           for (int col = 0; col < 9; col++)
-           {
-               if(Feld[row_select][column_select]==Base_Feld[row_select][col]){
-                   system("cls");
-                   printf("\n\nIn der Spalte %d und Reihe %d gibt es bereits den Eintrag %d\n\n", col+1, row_select+1, new_value);
-                   goto set;
-               }
-               if(Feld[row_select][column_select]==Base_Feld[row][column_select]){
-                   system("cls");
-                   printf("\n\nIn der Reihe %d und Spalte %d gibt es bereits den Eintrag %d\n\n", row+1, column_select+1, new_value);
-                   goto set;
-               }
-           }
-       }
+        for (int row = 0; row < 9; row++)
+        {
+            for (int col = 0; col < 9; col++)
+            {
+                if (Feld[row_select][column_select] == Base_Feld[row_select][col])
+                {
+                    system("cls");
+                    printf("\n\nIn der Spalte %d und Reihe %d gibt es bereits den Eintrag %d\n\n", col + 1, row_select + 1, new_value);
+                    goto set;
+                }
+                if (Feld[row_select][column_select] == Base_Feld[row][column_select])
+                {
+                    system("cls");
+                    printf("\n\nIn der Reihe %d und Spalte %d gibt es bereits den Eintrag %d\n\n", row + 1, column_select + 1, new_value);
+                    goto set;
+                }
+            }
+        }
 
         //TODO: Box regel
-       startBoxRow = (row_select+1) - row_select % 3;
-       startBoxCol = (column_select+1) - column_select % 3;
+        startBoxRow = (row_select + 1) - row_select % 3;
+        startBoxCol = (column_select + 1) - column_select % 3;
 
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                if (Feld[i+startBoxRow][j+startBoxCol]==Feld[row_select][column_select])
+                if (Feld[i + startBoxRow][j + startBoxCol] == Feld[row_select][column_select])
                 {
-                    printf("\n\nIm der gleichen Box in der %d ten Spalte und der %d ten Reihe der Box gibt es bereits den Eintrag %d\n\n", startBoxRow+i+1, j+startBoxCol+1, new_value);
+                    printf("\n\nIm der gleichen Box in der %d ten Spalte und der %d ten Reihe der Box gibt es bereits den Eintrag %d\n\n", startBoxRow + i + 1, j + startBoxCol + 1, new_value);
                     goto set;
                 }
             }
         }
-        
 
-       set:
-    empty_fields--;
+    set:
+        empty_fields--;
     }
 
     return 0;

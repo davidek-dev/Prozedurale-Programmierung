@@ -24,27 +24,34 @@ Wie verändert sich das Programm aus b)?
 #include <stdio.h>
 #include <math.h>
 
-
-int std_euklid_ggT(unsigned int a, unsigned int b){
-  if (a == 0) { // ggt(A,B) = b
+int std_euklid_ggT(unsigned int a, unsigned int b)
+{
+  if (a == 0)
+  { // ggt(A,B) = b
     a = b;
     b = 0; // Damit bricht nachfolgender Algorithmus ab
   }
 
-  while (b != 0) {
-    if (a > b) {
+  while (b != 0)
+  {
+    if (a > b)
+    {
       a = a - b;
-    } else {
-      b = b - a;//sdasdh
+    }
+    else
+    {
+      b = b - a; //sdasdh
     }
   }
   return a;
 }
 
-int advanced_euklid_ggT(unsigned int a, unsigned int b){
-  unsigned int temp=0;
+int advanced_euklid_ggT(unsigned int a, unsigned int b)
+{
+  unsigned int temp = 0;
 
-  while (b != 0) {
+  while (b != 0)
+  {
     temp = a % b;
     a = b;
     b = temp;
@@ -52,10 +59,12 @@ int advanced_euklid_ggT(unsigned int a, unsigned int b){
   return a;
 }
 
-int advanced_euklid_ggT_no_modulo(unsigned int a, unsigned int b){
-  unsigned int temp=0;
+int advanced_euklid_ggT_no_modulo(unsigned int a, unsigned int b)
+{
+  unsigned int temp = 0;
 
-  while (b != 0) {
+  while (b != 0)
+  {
     temp = a - (a / b) * b; //Integer division "verschluckt" den Rest, durch subtrahieren mit Orginal Wert kann der Rest ermittelt werden
     a = b;
     b = temp;
@@ -63,25 +72,27 @@ int advanced_euklid_ggT_no_modulo(unsigned int a, unsigned int b){
   return a;
 }
 
-int main (){
+int main()
+{
 
-   int Modus =0;
-   unsigned int a, b;
-   printf("\nHallo und willkommen zum ggT Rechner!\nEs gibt zwei M%cglichkeiten den ggT zu berechnen\n\n", 148);
-   printf("\t1. klassischer euklidischer Algorithmus\n");
-   printf("\t2. effizienteren, modifizierten Euklidischen Algorithmus\n");
-   printf("\t3. effizienteren, modifizierten Euklidischen Algorithmus ohne den Modulo Operator\n\n");
-   //while((!(Modus==1))||(!(Modus==2))||(!(Modus==3))){
-       printf("Welchen Modus willst du verwenden? 1, 2 oder 3?\n");
-       scanf("%d",&Modus);
-   //}
-   
-   printf("\n\nGeb die erste Zahl ein:\t\n");
-   scanf("%d", &a);
-   printf("\nGeb die zweite Zahl ein:\t\n");
-   scanf("%d", &b);
+  int Modus = 0;
+  unsigned int a, b;
+  printf("\nHallo und willkommen zum ggT Rechner!\nEs gibt zwei M%cglichkeiten den ggT zu berechnen\n\n", 148);
+  printf("\t1. klassischer euklidischer Algorithmus\n");
+  printf("\t2. effizienteren, modifizierten Euklidischen Algorithmus\n");
+  printf("\t3. effizienteren, modifizierten Euklidischen Algorithmus ohne den Modulo Operator\n\n");
+  //while((!(Modus==1))||(!(Modus==2))||(!(Modus==3))){
+  printf("Welchen Modus willst du verwenden? 1, 2 oder 3?\n");
+  scanf("%d", &Modus);
+  //}
 
-  if ((a == 0) && (b == 0)) {
+  printf("\n\nGeb die erste Zahl ein:\t\n");
+  scanf("%d", &a);
+  printf("\nGeb die zweite Zahl ein:\t\n");
+  scanf("%d", &b);
+
+  if ((a == 0) && (b == 0))
+  {
     printf("Der ggT ist fuer a == b == 0 nicht definiert!\n");
     return -1;
   }
@@ -89,20 +100,18 @@ int main (){
   switch (Modus)
   {
   case 1:
-      printf("Klassischer Euklidischer Algorithmus:\n\n");
-      printf("\tggT(%d, %d) = %d\n\n", a, b, std_euklid_ggT(a, b));
-      break;
+    printf("Klassischer Euklidischer Algorithmus:\n\n");
+    printf("\tggT(%d, %d) = %d\n\n", a, b, std_euklid_ggT(a, b));
+    break;
   case 2:
-      printf("Modifizierter Euklidischer Algorithmus:\n\n");
-        printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT(a, b));  
-      break;
+    printf("Modifizierter Euklidischer Algorithmus:\n\n");
+    printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT(a, b));
+    break;
   default:
-      printf("Modifizierter Euklidischer Algorithmus (ohne \045):\n");
-      printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT_no_modulo(a, b));
-      break;
+    printf("Modifizierter Euklidischer Algorithmus (ohne \045):\n");
+    printf("\tggT(%d, %d) = %d\n\n", a, b, advanced_euklid_ggT_no_modulo(a, b));
+    break;
   }
-
-
 
   return 0;
 }
