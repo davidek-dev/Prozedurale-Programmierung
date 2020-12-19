@@ -28,6 +28,7 @@ void toMath(unsigned int bmp_x, unsigned int bmp_y, double *x, double *y)
     return;
 }
 
+
 void toBMP(double math_x, double math_y, unsigned int *x, unsigned int *y)
 {
     //zunächst problem behandlung: out of bounds damit bei out of bounds trotzdem gedruckt wird.
@@ -42,6 +43,8 @@ void toBMP(double math_x, double math_y, unsigned int *x, unsigned int *y)
     *y = H - (int)((math_y - y_min) * H / (y_max - y_min)); //H -, weil maximales H ja ganz oben ist als bei niedrigem BMP
     return;
 }
+
+
 
 int main()
 {

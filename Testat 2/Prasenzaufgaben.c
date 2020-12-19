@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#define Aufgabe7
+#define Aufgabe8
 
 int main()
 {
