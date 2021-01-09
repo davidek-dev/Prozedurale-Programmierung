@@ -89,7 +89,7 @@ for (int i = 0; i < H; i++)
         // case 5 ... 9:
         //     canvas[i * W + j] = COLOR_GREEN;
         //     break;
-        // case 10 ... 19:
+        // case 10 ... 19:7
         //     canvas[i * W + j] = COLOR_BLUE;
         //     break;
         // case 20 ... 499:
