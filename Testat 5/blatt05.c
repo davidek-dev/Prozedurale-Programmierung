@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+//PRÄSENZAUFGABE 7 !!!!!!
 /*
 1.1 Datenstruktur
 Erstellen Sie ein globales, zweidimensionales und statisches Array zur Speicherung 
