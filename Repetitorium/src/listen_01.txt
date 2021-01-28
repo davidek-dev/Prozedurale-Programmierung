@@ -1,0 +1,24 @@
+Aufgabe 4
+	Beschreibung: Text4
+	Prioritaet: 3
+	Nicht zugewiesen.
+Aufgabe 1
+	Beschreibung: Text1
+	Prioritaet: 2
+	Zugewiesen an: Vorname1 Nachname1 (1)
+Aufgabe 6
+	Beschreibung: Text6
+	Prioritaet: 2
+	Nicht zugewiesen.
+Aufgabe 2
+	Beschreibung: Text2
+	Prioritaet: 3
+	Nicht zugewiesen.
+Aufgabe 3
+	Beschreibung: Text3
+	Prioritaet: 1
+	Zugewiesen an: Vorname2 Nachname2 (2)
+Aufgabe 5
+	Beschreibung: Text5
+	Prioritaet: 4
+	Nicht zugewiesen.

@@ -41,7 +41,6 @@ void printListReverse(struct student* curr)
 
 
 int main(){
-
     printList(&Anna);
     printf("\n");
     printListReverse(&Anna);
