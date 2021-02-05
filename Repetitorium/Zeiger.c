@@ -237,11 +237,33 @@ A: p hat den Datentyp void*
 
 Warum genügt es in den Zeilen 9,11 und 13 nicht einfach nur p zu schreiben?
 
-A: Weil 
+A: Weil der Pointer in void representation abgespeichert wird. 
+Damit er in der entsprechenden Datentyp repräsentation angezeigt wird, braucht man ein entsprechenden cast
+Nutzung ohne des Casts führt zu einem Fehler, da kein NULL Pointer angezeigt werden kann(welches der Pointer in void representation entspricht)
 
+Was bedeutet "typecasting"?
+
+A: Als Typumwandlung (englisch type conversion oder type casting, kurz cast)
+wird in der Informatik die Umwandlung eines Datentyps in einen anderen bezeichnet, 
+um eine Typverletzung zu vermeiden, 
+die durch mangelnde Zuweisungskompatibilität gegeben ist.
+
+Was ist der Unterschied zwischen explizieten und implizieten typecasting?
+
+A: beim implizieten typecast wird der Typ durch den compiler passen umintepretiert. 
+Dies geschieht zum Beispel bei Mathematischen Operationen mit verschiedenen Typen.
+explizites typecasting geschieht durch den () operator, indem man den zieltyp in die klammer schreibt
+und den umzuwandelnden Wert nach der klammer schreibt.
+Dies bewirkt eine gezielte Typumwandlung und kann beispielweise genutzt werden,
+um gezielt Nachkommastellen auszulassen.
 
 */
+
 #endif
+
+
+
+
 
     return 0;
 }
