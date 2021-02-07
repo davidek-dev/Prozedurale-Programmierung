@@ -8,7 +8,6 @@ bool determin(int max_lange, int count, int belegung, int *arr, int *ziel)
     {
         return true;
     }
-    
     for (int i = 0; i < count; i++)
     {
             ziel[belegung] = arr[i];
@@ -20,11 +19,8 @@ bool determin(int max_lange, int count, int belegung, int *arr, int *ziel)
         }
         }
         arr[i] = ziel[belegung];
-    
     }
-
     ziel[belegung] = 0;
-
     return false;
 }
 
@@ -47,7 +43,5 @@ int main()
     {
         printf("%d\t", ziel[i]);
     }
-    
-
     return 0;
 }
